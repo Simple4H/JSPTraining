@@ -17,11 +17,14 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     //注册新用户
-    int registerNewUser(@Param("username") String username, @Param("password")String password, @Param("email")String email, @Param("phone")String phone, @Param("question")String question, @Param("answer")String answer);
+    int registerNewUser(@Param("username") String username, @Param("password") String password, @Param("email") String email, @Param("phone") String phone, @Param("question") String question, @Param("answer") String answer);
 
     //校验用户名字
     int checkUsername(String username);
 
     //校验邮箱
     int checkEmail(String email);
+
+    //登录
+    User userLogin(@Param("username") String username, @Param("password") String password);
 }

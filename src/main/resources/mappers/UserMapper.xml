@@ -170,4 +170,13 @@
         FROM simple_user
         WHERE email = #{email}
     </select>
+
+    <select id="userLogin" resultMap="BaseResultMap" parameterType="map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from simple_user WHERE
+        username=#{username}
+        and
+        password=#{password}
+    </select>
 </mapper>
