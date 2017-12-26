@@ -37,31 +37,43 @@ public class ServerResponse<T> implements Serializable {
         return this.status == ResponseCode.SUCCESS.getCode();
     }
 
-    public <T> ServerResponse<T> createBySuccess() {
+    public int getStatus() {
+        return status;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public static <T> ServerResponse<T> createBySuccess() {
         return new ServerResponse<>(ResponseCode.SUCCESS.getCode());
     }
 
-    public <T> ServerResponse<T> createBySuccess(T data) {
+    public static <T> ServerResponse<T> createBySuccess(T data) {
         return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), data);
     }
 
-    public <T> ServerResponse<T> createBySuccess(String msg, T data) {
+    public static <T> ServerResponse<T> createBySuccess(String msg, T data) {
         return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getDesc(), data);
     }
 
-    public <T> ServerResponse<T> createBySuccessMessage(String msg) {
-        return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getDesc());
+    public static <T> ServerResponse<T> createBySuccessMessage(String msg) {
+        return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), msg);
     }
 
-    public <T> ServerResponse<T> createByError() {
+    public static <T> ServerResponse<T> createByError() {
         return new ServerResponse<>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDesc());
     }
 
-    public <T> ServerResponse<T> createByErrorMessage(String errorMessage) {
+    public static <T> ServerResponse<T> createByErrorMessage(String errorMessage) {
         return new ServerResponse<>(ResponseCode.ERROR.getCode(), errorMessage);
     }
 
-    public <T> ServerResponse<T> createByErrorCodeMessage(int errorCode, String errorMessage) {
+    public static <T> ServerResponse<T> createByErrorCodeMessage(int errorCode, String errorMessage) {
         return new ServerResponse<>(errorCode, errorMessage);
     }
 
