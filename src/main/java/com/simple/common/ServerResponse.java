@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Create by S I M P L E on 2017/12/26
  */
-@JsonSerialize(include =  JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ServerResponse<T> implements Serializable {
 
     private int status;
@@ -36,6 +36,7 @@ public class ServerResponse<T> implements Serializable {
         this.msg = msg;
         this.data = data;
     }
+
     @JsonIgnore
     public boolean isSuccess() {
         return this.status == ResponseCode.SUCCESS.getCode();
@@ -62,7 +63,7 @@ public class ServerResponse<T> implements Serializable {
     }
 
     public static <T> ServerResponse<T> createBySuccess(String msg, T data) {
-        return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getDesc(), data);
+        return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), msg, data);
     }
 
     public static <T> ServerResponse<T> createBySuccessMessage(String msg) {

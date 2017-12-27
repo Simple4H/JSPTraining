@@ -77,7 +77,7 @@ public class UserController {
 
 
     //登录状态下修改密码
-    @RequestMapping(value = "update_user_password", method = RequestMethod.POST)
+    @RequestMapping(value = "update_user_password.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> updateUserPassword(@RequestBody Map map, HttpSession session) {
         String oldPassword = (String) map.get("oldPassword");
@@ -88,4 +88,26 @@ public class UserController {
         }
         return iUserService.updateUserPassword(oldPassword, newPassword, user.getUsername());
     }
+
+    //忘记密码--获取token
+    @RequestMapping(value = "forget_password_check_answer.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> forgetPasswordCheckAnswer(@RequestBody Map map) {
+        String username = (String) map.get("username");
+        String question = (String) map.get("question");
+        String answer = (String) map.get("answer");
+        return iUserService.checkQuestionAnswer(username, question, answer);
+    }
+
+    //忘记密码--重置密码
+    @RequestMapping(value = "reset_password.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> resetPassword(@RequestBody Map map) {
+        String username = (String) map.get("username");
+        String newPassword = (String) map.get("newPassword");
+        String forgetToken = (String) map.get("forgetToken");
+        return iUserService.resetPassword(username, newPassword, forgetToken);
+    }
+
+
 }

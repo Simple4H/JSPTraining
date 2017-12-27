@@ -1,12 +1,15 @@
 package com.simple.service.impl;
 
 import com.simple.common.ServerResponse;
+import com.simple.common.TokenCache;
 import com.simple.dao.UserMapper;
 import com.simple.pojo.User;
 import com.simple.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * Create by S I M P L E on 2017/12/26
@@ -68,8 +71,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     //登录状态下修改个人密码
-    public ServerResponse<String> updateUserPassword(String oldPassword,String newPassword,String username){
-        if (userMapper.checkPassword(oldPassword) == 0){
+    public ServerResponse<String> updateUserPassword(String oldPassword, String newPassword, String username) {
+        if (userMapper.checkPassword(oldPassword) == 0) {
             return ServerResponse.createByErrorMessage("旧密码错误");
         }
         int resultCount = userMapper.updateUserPassword(oldPassword, newPassword, username);
@@ -79,4 +82,40 @@ public class UserServiceImpl implements IUserService {
         return ServerResponse.createByErrorMessage("修改密码错误");
     }
 
+    //校验问题和答案,获取token
+    public ServerResponse<String> checkQuestionAnswer(String username, String question, String answer) {
+        if (userMapper.checkUsername(username) == 0) {
+            return ServerResponse.createByErrorMessage("用户名不存在");
+        }
+        int resultCount = userMapper.checkQuestionAndAnswer(username, question, answer);
+        if (resultCount > 0) {
+            String forgetToken = UUID.randomUUID().toString();
+            TokenCache.setKey(TokenCache.TOKEN_PREFIX + username, forgetToken);
+            return ServerResponse.createBySuccess("获取token成功", forgetToken);
+        }
+        return ServerResponse.createByErrorMessage("问题或答案错误");
+    }
+
+    //通过token修改个人密码
+    public ServerResponse<String> resetPassword(String username, String newPassword, String forgetToken) {
+        if (StringUtils.isBlank(forgetToken)) {
+            return ServerResponse.createByErrorMessage("参数错误,token需要传递");
+        }
+        if (userMapper.checkUsername(username) == 0) {
+            return ServerResponse.createByErrorMessage("用户名不存在");
+        }
+        String token = TokenCache.getKey(TokenCache.TOKEN_PREFIX + username);
+        if (StringUtils.isBlank(token)) {
+            return ServerResponse.createByErrorMessage("token无效或者过期");
+        }
+        if (StringUtils.equals(forgetToken, token)) {
+            int resultCount = userMapper.resetPassword(username, newPassword);
+            if (resultCount > 0) {
+                return ServerResponse.createBySuccessMessage("修改密码成功");
+            }
+        } else {
+            return ServerResponse.createByErrorMessage("token错误,请重新获取重置密码的token");
+        }
+        return ServerResponse.createByErrorMessage("修改密码错误");
+    }
 }

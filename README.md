@@ -79,3 +79,31 @@ _User Module_
 "data": null,<br>
 "success": true<br>
 }<br>
+- forget_password_check_answer.do<br>
+输入<br>
+{<br>
+  "username":"huangbude",<br>
+  "question":"好不好",<br>
+  "answer":"好"<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "获取token成功",<br>
+"data": "583c72ff-7adf-4e5c-8bfe-4f539f4d7a62",<br>
+"success": true<br>
+}<br>
+- reset_password.do<br>
+输入<br>
+{<br>
+  "username":"huangbude",<br>
+  "newPassword":"123123123",<br>
+  "forgetToken":"583c72ff-7adf-4e5c-8bfe-4f539f4d7a62"<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "修改密码成功",<br>
+"data": null,<br>
+"success": true<br>
+}<br>

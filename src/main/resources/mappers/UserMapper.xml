@@ -204,4 +204,17 @@
         WHERE
             password = #{oldPassword} AND username = #{username}
     </update>
+
+    <select id="checkQuestionAndAnswer" resultType="java.lang.Integer" parameterType="map">
+        SELECT count(1)
+        FROM simple_user
+        WHERE username = #{username} AND question = #{question} AND
+              answer = #{answer}
+    </select>
+
+    <update id="resetPassword" parameterType="map">
+        UPDATE simple_user
+        SET password = #{newPassword}
+        WHERE username = #{username}
+    </update>
 </mapper>

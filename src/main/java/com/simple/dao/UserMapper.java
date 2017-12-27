@@ -39,4 +39,10 @@ public interface UserMapper {
 
     //登录状态下修改个人密码
     int updateUserPassword(@Param("oldPassword")String oldPassword,@Param("newPassword")String newPassword,@Param("username")String username);
+
+    //校验问题和答案
+    int checkQuestionAndAnswer(@Param("username")String username,@Param("question")String question,@Param("answer")String answer);
+
+    //重置密码
+    int resetPassword(@Param("username")String username,@Param("newPassword")String newPassword);
 }
