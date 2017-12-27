@@ -50,7 +50,7 @@ _User Module_
 输出<br>
 {<br>
 "status": 1,<br>
-"msg": "邮箱已经存在",<br><br>
+"msg": "邮箱已经存在",<br>
 "data": null,
 "success": false<br>
 }<br>
