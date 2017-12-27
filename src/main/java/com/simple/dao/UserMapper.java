@@ -45,4 +45,10 @@ public interface UserMapper {
 
     //重置密码
     int resetPassword(@Param("username")String username,@Param("newPassword")String newPassword);
+
+    //获取用户信息
+    User getUserInformation(String username);
+
+    //更新用户问题和答案
+    int updateQuestionAndAnswer(@Param("question")String question,@Param("answer")String answer,@Param("username")String username);
 }

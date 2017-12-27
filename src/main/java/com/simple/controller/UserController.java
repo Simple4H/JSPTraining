@@ -109,5 +109,38 @@ public class UserController {
         return iUserService.resetPassword(username, newPassword, forgetToken);
     }
 
+    //登出
+    @RequestMapping(value = "logout.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> logout(HttpSession session) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createBySuccessMessage("用户已经登出");
+        }
+        return ServerResponse.createBySuccessMessage("登出成功");
+    }
 
+    //获取用户信息
+    @RequestMapping(value = "get_user_information.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<User> getUserInformation(HttpSession session) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录，请登录");
+        }
+        return iUserService.getUserInformation(user.getUsername());
+    }
+
+    //更新用户问题和答案
+    @RequestMapping(value = "update_question_and_answer.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> updateQuestionAndAnswer(@RequestBody Map map, HttpSession session) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录，请登录");
+        }
+        String question = (String) map.get("question");
+        String answer = (String) map.get("answer");
+        return iUserService.updateQuestionAndAnswer(question, answer, user.getUsername());
+    }
 }

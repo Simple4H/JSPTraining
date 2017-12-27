@@ -99,7 +99,7 @@ public class UserServiceImpl implements IUserService {
     //通过token修改个人密码
     public ServerResponse<String> resetPassword(String username, String newPassword, String forgetToken) {
         if (StringUtils.isBlank(forgetToken)) {
-            return ServerResponse.createByErrorMessage("参数错误,token需要传递");
+            return ServerResponse.createByErrorMessage("没有token,token需要传递");
         }
         if (userMapper.checkUsername(username) == 0) {
             return ServerResponse.createByErrorMessage("用户名不存在");
@@ -117,5 +117,24 @@ public class UserServiceImpl implements IUserService {
             return ServerResponse.createByErrorMessage("token错误,请重新获取重置密码的token");
         }
         return ServerResponse.createByErrorMessage("修改密码错误");
+    }
+
+    //获取个人信息
+    public ServerResponse<User> getUserInformation(String username) {
+        User user = userMapper.getUserInformation(username);
+        if (user != null) {
+            user.setPassword(StringUtils.EMPTY);
+            return ServerResponse.createBySuccess("查询成功", user);
+        }
+        return ServerResponse.createByErrorMessage("查询失败");
+    }
+
+    //更新用户问题和答案
+    public ServerResponse<String> updateQuestionAndAnswer(String question, String answer, String username){
+        int resultCount = userMapper.updateQuestionAndAnswer(question,answer,username);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("修改问题和答案成功");
+        }
+        return ServerResponse.createByErrorMessage("修改密码问题和答案失败");
     }
 }

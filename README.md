@@ -107,3 +107,49 @@ _User Module_
 "data": null,<br>
 "success": true<br>
 }<br>
+- logout.do<br>
+输入<br>
+{<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "登出成功",<br>
+"data": null,<br>
+"success": true<br>
+}<br>
+- get_user_information.do<br>
+输入<br>
+{<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "查询成功",<br>
+"data":{<br>
+"id": 15,<br>
+"username": "simple",<br>
+"password": "",<br>
+"email": "crescentcxm@gmail.com",<br>
+"phone": "18578230461",<br>
+"question": "没有bug",<br>
+"answer": "是的",<br>
+"role": 1,<br>
+"createTime": 1514298249000,<br>
+"updateTime": 1514298249000<br>
+},<br>
+"success": true<br>
+}<br>
+- update_question_and_answer.do<br>
+输入<br>
+{<br>
+  "question":"没有bug",<br>
+  "answer":"是的"<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "修改问题和答案成功",<br>
+"data": null,<br>
+"success": true<br>
+}<br>

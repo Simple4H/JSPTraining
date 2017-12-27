@@ -217,4 +217,16 @@
         SET password = #{newPassword}
         WHERE username = #{username}
     </update>
+
+    <select id="getUserInformation" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from simple_user WHERE username = #{username}
+    </select>
+
+    <update id="updateQuestionAndAnswer" parameterType="map">
+        UPDATE simple_user
+        SET question = #{question}, answer = #{answer}
+        WHERE username = #{username}
+    </update>
 </mapper>
