@@ -8,7 +8,14 @@ import com.simple.pojo.User;
  */
 public interface IUserService {
 
-    ServerResponse<String> register(String username, String password, String question, String answer, String phone, String email);
+    ServerResponse<String> register(String username, String password, String email, String phone, String question, String answer);
 
     ServerResponse<User> login(String username, String password);
+
+    ServerResponse<String> updateUserPhone(String phone,String username);
+
+    ServerResponse<String> updateUserEmail(String email, String username);
+
+    ServerResponse<String> updateUserPassword(String oldPassword,String newPassword,String username);
+
 }

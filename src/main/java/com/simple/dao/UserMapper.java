@@ -27,4 +27,16 @@ public interface UserMapper {
 
     //登录
     User userLogin(@Param("username") String username, @Param("password") String password);
+
+    //修改手机号码
+    int updateUserPhone(@Param("phone") String phone,@Param("username")String username);
+
+    //修改邮箱
+    int updateUserEmail(@Param("email")String email,@Param("username")String username);
+
+    //校验密码
+    int checkPassword(String oldPassword);
+
+    //登录状态下修改个人密码
+    int updateUserPassword(@Param("oldPassword")String oldPassword,@Param("newPassword")String newPassword,@Param("username")String username);
 }

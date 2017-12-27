@@ -1,6 +1,7 @@
 package com.simple.controller;
 
 import com.simple.common.Const;
+import com.simple.common.ResponseCode;
 import com.simple.common.ServerResponse;
 import com.simple.pojo.User;
 import com.simple.service.IUserService;
@@ -34,7 +35,7 @@ public class UserController {
         String phone = (String) map.get("phone");
         String question = (String) map.get("question");
         String answer = (String) map.get("answer");
-        return iUserService.register(username, password, question, answer, phone, email);
+        return iUserService.register(username, password, email, phone, question, answer);
     }
 
     //登录
@@ -48,5 +49,43 @@ public class UserController {
             session.setAttribute(Const.CURRENT_USER, response.getData());
         }
         return response;
+    }
+
+    //修改个人信息的手机号码
+    @RequestMapping(value = "update_user_phone.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> updateUserPhone(@RequestBody Map map, HttpSession session) {
+        String phone = (String) map.get("phone");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iUserService.updateUserPhone(phone, user.getUsername());
+    }
+
+    //修改个人信息的邮箱
+    @RequestMapping(value = "update_user_email.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> updateUserEmail(@RequestBody Map map, HttpSession session) {
+        String email = (String) map.get("email");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iUserService.updateUserEmail(email, user.getUsername());
+    }
+
+
+    //登录状态下修改密码
+    @RequestMapping(value = "update_user_password", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> updateUserPassword(@RequestBody Map map, HttpSession session) {
+        String oldPassword = (String) map.get("oldPassword");
+        String newPassword = (String) map.get("newPassword");
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
+        }
+        return iUserService.updateUserPassword(oldPassword, newPassword, user.getUsername());
     }
 }

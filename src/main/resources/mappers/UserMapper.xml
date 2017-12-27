@@ -179,4 +179,29 @@
         and
         password=#{password}
     </select>
+
+    <update id="updateUserPhone" parameterType="map">
+        UPDATE simple_user
+        SET phone = #{phone}
+        WHERE username = #{username}
+    </update>
+
+    <update id="updateUserEmail" parameterType="map">
+        UPDATE simple_user
+        SET email = #{email}
+        WHERE username = #{username}
+    </update>
+
+    <select id="checkPassword" parameterType="string" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM simple_user
+        WHERE password = #{oldPassword}
+    </select>
+
+    <update id="updateUserPassword" parameterType="map">
+        UPDATE simple_user
+        SET password = #{newPassword}
+        WHERE
+            password = #{oldPassword} AND username = #{username}
+    </update>
 </mapper>

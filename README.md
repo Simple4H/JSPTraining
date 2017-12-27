@@ -1,46 +1,81 @@
 # JSPTraining
-##user module
-register.do <br>
-输入的字段<br>
-{<br>
-  "username": "huangbude",<br>
-  "password": "123123123",<br>
-  "email":"crescentcxm@gmail.com",<br>
-  "phone":"18578230461",<br>
-  "question":"没有bug",<br>
-  "answer":"是的"<br>
-}
+_User Module_
 <br>
-返回值<br>
+- login.do<br>
+输出<br>
+{<br>
+  "username": "simple",<br>
+  "password": "123123123"<br>
+}<br>
+输出<br>
 {<br>
 "status": 0,<br>
 "msg": "SUCCESS",<br>
+"data":{<br>
+"id": 15,<br>
+"username": "simple",<br>
+"password": "",<br>
+"email": "crescentcxm@gmail.com",<br>
+"phone": "??????????",<br>
+"question": "没有bug",<br>
+"answer": "是的",<br>
+"role": 1,<br>
+"createTime": 1514298249000,<br>
+"updateTime": 1514298249000<br>
+},<br>
+"success": true<br>
+}<br>
+- register.do<br>
+输入<br>
+{<br>
+  "username": "huangbude",<br>
+  "password": "123123123",<br>
+  "email":"673724357@qq.com",<br>
+  "phone":"??????????",<br>
+  "question":"好不好",<br>
+  "answer":"好"<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "注册成功",<br>
 "data": null,<br>
 "success": true<br>
 }<br>
-<br><br>
-login.do <br>
-输入的字段<br>
+- update_user_email.do<br>
+输入<br>
 {<br>
-  "username": "huangbude",<br>
-  "password": "123123123"<br>
+  "email":"crescentcxm@gmail.com"<br>
 }<br>
-返回值<br>
+输出<br>
 {<br>
-   "status": 0,<br>
-   "msg": "SUCCESS",<br>
-   "data":{<br>
-   "id": 12,<br>
-   "username": "huangbude",<br>
-   "password": "123123123",<br>
-   "email": "没有bug",<br>
-   "phone": "是的",<br>
-   "question": "???????????",<br>
-   "answer": "crescentcxm@gmail.com",<br>
-   "role": 0,<br>
-   "createTime": 1514294340000,<br>
-   "updateTime": 1514294340000<br>
-   },<br>
-   "success": true<br>
-   }<br>
-<br><br>
+"status": 1,<br>
+"msg": "邮箱已经存在",<br><br>
+"data": null,
+"success": false<br>
+}<br>
+- update_user_phone.do<br>
+输入 <br>
+{<br>
+  "phone":"???????????"<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "修改手机号码成功",<br>
+"data": null,<br>
+"success": true<br>
+}<br>
+- update_user_password.do<br>
+输入<br>
+{<br>
+  "oldPassword":"123123123",<br>
+  "newPassword":"asdasdasd"<br>
+}<br>
+输出<br>
+{<br>
+"status": 0,<br>
+"msg": "修改密码成功",<br>
+"data": null,<br>
+"success": true<br>
+}<br>
