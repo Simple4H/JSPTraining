@@ -143,4 +143,15 @@ public class UserController {
         String answer = (String) map.get("answer");
         return iUserService.updateQuestionAndAnswer(question, answer, user.getUsername());
     }
+
+    //校验管理员
+    @RequestMapping(value = "check_admin.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse checkAdmin(HttpSession session) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录，请登录");
+        }
+        return iUserService.checkAdmin(user);
+    }
 }

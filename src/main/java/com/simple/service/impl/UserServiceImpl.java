@@ -1,5 +1,6 @@
 package com.simple.service.impl;
 
+import com.simple.common.Const;
 import com.simple.common.ServerResponse;
 import com.simple.common.TokenCache;
 import com.simple.dao.UserMapper;
@@ -130,11 +131,19 @@ public class UserServiceImpl implements IUserService {
     }
 
     //更新用户问题和答案
-    public ServerResponse<String> updateQuestionAndAnswer(String question, String answer, String username){
-        int resultCount = userMapper.updateQuestionAndAnswer(question,answer,username);
+    public ServerResponse<String> updateQuestionAndAnswer(String question, String answer, String username) {
+        int resultCount = userMapper.updateQuestionAndAnswer(question, answer, username);
         if (resultCount > 0) {
             return ServerResponse.createBySuccessMessage("修改问题和答案成功");
         }
         return ServerResponse.createByErrorMessage("修改密码问题和答案失败");
+    }
+
+    //校验是不是管理员
+    public ServerResponse checkAdmin(User user) {
+        if (user.getRole() == Const.Role.ROLE_ADMIN){
+            return ServerResponse.createBySuccessMessage("是管理员");
+        }
+        return ServerResponse.createByErrorMessage("不是管理员");
     }
 }

@@ -26,4 +26,6 @@ public interface IUserService {
 
     ServerResponse<String> updateQuestionAndAnswer(String question, String answer, String username);
 
+    ServerResponse checkAdmin(User user);
+
 }
