@@ -188,4 +188,9 @@
                         #{receiverCity}, #{receiverDistrict},
                         #{receiverAddress}, #{receiverZip}, now(), now())
     </insert>
+
+    <delete id="deleteShippingAddress" parameterType="string">
+        DELETE FROM simple_shipping
+        WHERE id = #{shippingId} AND user_id = #{userId}
+    </delete>
 </mapper>

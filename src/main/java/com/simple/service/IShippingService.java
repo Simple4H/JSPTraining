@@ -11,4 +11,6 @@ public interface IShippingService {
                                                  String receiverMobile, String receiverProvince,
                                                  String receiverCity, String receiverDistrict,
                                                  String receiverAddress, String receiverZip);
+
+    ServerResponse<String> deleteShippingAddress(String shippingId, String userId);
 }

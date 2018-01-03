@@ -25,4 +25,12 @@ public class ShippingServiceImpl implements IShippingService {
         }
         return ServerResponse.createByErrorMessage("新建收货地址失败");
     }
+
+    public ServerResponse<String> deleteShippingAddress(String shippingId, String userId) {
+        int resultCount = shippingMapper.deleteShippingAddress(shippingId, userId);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("删除收货地址成功");
+        }
+        return ServerResponse.createByErrorMessage("删除收货地址失败");
+    }
 }

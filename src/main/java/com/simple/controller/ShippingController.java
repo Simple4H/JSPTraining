@@ -24,6 +24,7 @@ public class ShippingController {
     @Autowired
     private IShippingService iShippingService;
 
+    //添加新的收货地址
     @RequestMapping(value = "add_shipping_address.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addShippingAddress(HttpSession session, @RequestBody Map map) {
@@ -41,5 +42,18 @@ public class ShippingController {
         String receiverAddress = (String) map.get("receiverAddress");
         String receiverZip = (String) map.get("receiverZip");
         return iShippingService.addNewShippingAddress(userId, receiverName, receiverPhone, receiverMobile, receiverProvince, receiverCity, receiverDistrict, receiverAddress, receiverZip);
+    }
+
+    //删除收货地址
+    @RequestMapping(value = "delete_shipping_address.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> deleteShippingAddress(HttpSession session, @RequestBody Map map) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录，无法新建新的收货地址");
+        }
+        String shippingId = (String) map.get("shippingId");
+        String userId = String.valueOf(user.getId());
+        return iShippingService.deleteShippingAddress(shippingId, userId);
     }
 }
