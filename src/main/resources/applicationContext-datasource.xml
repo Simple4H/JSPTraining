@@ -58,23 +58,38 @@
         <property name="validationQuery" value="SELECT 1 FROM dual"/>
     </bean>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"/>
+    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"/>-->
 
-        <!-- 分页插件 -->
+        <!--&lt;!&ndash; 分页插件 &ndash;&gt;-->
+        <!--<property name="plugins">-->
+            <!--<array>-->
+                <!--<bean class="com.github.pagehelper.PageHelper">-->
+                    <!--<property name="properties">-->
+                        <!--<value>-->
+                            <!--dialect=mysql-->
+                        <!--</value>-->
+                    <!--</property>-->
+                <!--</bean>-->
+            <!--</array>-->
+        <!--</property>-->
+
+    <!--</bean>-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 注意其他配置 -->
         <property name="plugins">
             <array>
-                <bean class="com.github.pagehelper.PageHelper">
+                <bean class="com.github.pagehelper.PageInterceptor">
                     <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
                         <value>
-                            dialect=mysql
+                            params=value1
                         </value>
                     </property>
                 </bean>
             </array>
         </property>
-
     </bean>
 
     <bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
