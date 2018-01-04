@@ -1,5 +1,6 @@
 package com.simple.service;
 
+import com.github.pagehelper.PageInfo;
 import com.simple.common.ServerResponse;
 
 /**
@@ -13,4 +14,6 @@ public interface IShippingService {
                                                  String receiverAddress, String receiverZip);
 
     ServerResponse<String> deleteShippingAddress(String shippingId, String userId);
+
+    ServerResponse<PageInfo> getShippingAddress(int pageNum, int pageSize, String userId);
 }

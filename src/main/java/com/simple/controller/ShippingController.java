@@ -1,5 +1,6 @@
 package com.simple.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.simple.common.Const;
 import com.simple.common.ServerResponse;
 import com.simple.pojo.User;
@@ -55,5 +56,20 @@ public class ShippingController {
         String shippingId = (String) map.get("shippingId");
         String userId = String.valueOf(user.getId());
         return iShippingService.deleteShippingAddress(shippingId, userId);
+    }
+
+
+    //获取收货地址列表
+    @RequestMapping(value = "get_shipping_address.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<PageInfo> getShippingAddress(@RequestBody Map map, HttpSession session) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录，无法查看收货地址");
+        }
+        int pageNum = Integer.parseInt(String.valueOf(map.get("pageNum")));
+        int pageSize = Integer.parseInt(String.valueOf(map.get("pageSize")));
+        String userId = String.valueOf(user.getId());
+        return iShippingService.getShippingAddress(pageNum, pageSize,userId);
     }
 }

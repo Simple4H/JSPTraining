@@ -58,33 +58,25 @@
         <property name="validationQuery" value="SELECT 1 FROM dual"/>
     </bean>
 
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-        <!--<property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"/>-->
-
-        <!--&lt;!&ndash; 分页插件 &ndash;&gt;-->
-        <!--<property name="plugins">-->
-            <!--<array>-->
-                <!--<bean class="com.github.pagehelper.PageHelper">-->
-                    <!--<property name="properties">-->
-                        <!--<value>-->
-                            <!--dialect=mysql-->
-                        <!--</value>-->
-                    <!--</property>-->
-                <!--</bean>-->
-            <!--</array>-->
-        <!--</property>-->
-
-    <!--</bean>-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 注意其他配置 -->
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:mappers/*.xml</value>
+            </array>
+        </property>
+        <property name="typeAliasesPackage" value="com.isea533.mybatis.model"/>
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">
+                    <!-- 这里的几个配置主要演示如何使用，如果不理解，一定要去掉下面的配置 -->
                     <property name="properties">
-                        <!--使用下面的方式配置参数，一行配置一个 -->
                         <value>
-                            params=value1
+                            helperDialect=mysql
+                            reasonable=true
+                            supportMethodsArguments=true
+                            params=count=countSql
+                            autoRuntimeDialect=true
                         </value>
                     </property>
                 </bean>

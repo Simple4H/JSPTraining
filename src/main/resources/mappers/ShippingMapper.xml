@@ -193,4 +193,10 @@
         DELETE FROM simple_shipping
         WHERE id = #{shippingId} AND user_id = #{userId}
     </delete>
+
+    <select id="getShippingAddress" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from simple_shipping WHERE user_id = #{userId}
+    </select>
 </mapper>
