@@ -70,6 +70,26 @@ public class ShippingController {
         int pageNum = Integer.parseInt(String.valueOf(map.get("pageNum")));
         int pageSize = Integer.parseInt(String.valueOf(map.get("pageSize")));
         String userId = String.valueOf(user.getId());
-        return iShippingService.getShippingAddress(pageNum, pageSize,userId);
+        return iShippingService.getShippingAddress(pageNum, pageSize, userId);
+    }
+
+    @RequestMapping(value = "update_shipping_address.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> updateShippingAddress(HttpSession session, @RequestBody Map map) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录，无法更新收货地址");
+        }
+        String userId = String.valueOf(user.getId());
+        String shippingId = (String) map.get("shippingId");
+        String receiverName = (String) map.get("receiverName");
+        String receiverPhone = (String) map.get("receiverPhone");
+        String receiverMobile = (String) map.get("receiverMobile");
+        String receiverProvince = (String) map.get("receiverProvince");
+        String receiverCity = (String) map.get("receiverCity");
+        String receiverDistrict = (String) map.get("receiverDistrict");
+        String receiverAddress = (String) map.get("receiverAddress");
+        String receiverZip = (String) map.get("receiverZip");
+        return iShippingService.updateShippingAddress(userId, shippingId, receiverName, receiverPhone, receiverMobile, receiverProvince, receiverCity, receiverDistrict, receiverAddress, receiverZip);
     }
 }

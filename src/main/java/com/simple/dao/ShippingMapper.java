@@ -23,4 +23,6 @@ public interface ShippingMapper {
     int deleteShippingAddress(@Param("shippingId") String shippingId, @Param("userId") String userId);
 
     List<Shipping> getShippingAddress(String userId);
+
+    int updateShippingAddress(@Param("userId") String userId, @Param("shippingId") String shippingId, @Param("receiverName") String receiverName, @Param("receiverPhone") String receiverPhone, @Param("receiverMobile") String receiverMobile, @Param("receiverProvince") String receiverProvince, @Param("receiverCity") String receiverCity, @Param("receiverDistrict") String receiverDistrict, @Param("receiverAddress") String receiverAddress, @Param("receiverZip") String receiverZip);
 }

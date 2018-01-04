@@ -48,4 +48,16 @@ public class ShippingServiceImpl implements IShippingService {
         }
         return ServerResponse.createByErrorMessage("没有找到相关的收货地址");
     }
+
+    public ServerResponse<String> updateShippingAddress(String userId, String shippingId, String receiverName,
+                                                        String receiverPhone, String receiverMobile,
+                                                        String receiverProvince, String receiverCity,
+                                                        String receiverDistrict, String receiverAddress,
+                                                        String receiverZip) {
+        int resultCount = shippingMapper.updateShippingAddress(userId, shippingId, receiverName, receiverPhone, receiverMobile, receiverProvince, receiverCity, receiverDistrict, receiverAddress, receiverZip);
+        if (resultCount > 0) {
+            return ServerResponse.createBySuccessMessage("更新收货地址成功");
+        }
+        return ServerResponse.createByErrorMessage("修改地址错误");
+    }
 }

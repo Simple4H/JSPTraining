@@ -199,4 +199,19 @@
         <include refid="Base_Column_List"/>
         from simple_shipping WHERE user_id = #{userId}
     </select>
+
+    <update id="updateShippingAddress" parameterType="map">
+        UPDATE simple_shipping
+        SET
+            receiver_name     = #{receiverName},
+            receiver_phone    = #{receiverPhone},
+            receiver_mobile   = #{receiverMobile},
+            receiver_province = #{receiverProvince},
+            receiver_city     = #{receiverCity},
+            receiver_district = #{receiverDistrict},
+            receiver_address  = #{receiverAddress},
+            receiver_zip      = #{receiverZip},
+            update_time       = now()
+        WHERE user_id = #{userId} AND id = #{shippingId}
+    </update>
 </mapper>
