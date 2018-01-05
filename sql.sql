@@ -230,7 +230,7 @@ INSERT INTO `simple_product` VALUES
          '241997c4-9e62-4824-b7f0-7425c3c28917.jpeg',
          '241997c4-9e62-4824-b7f0-7425c3c28917.jpeg,b6c56eb0-01baa0f7b2.jpeg,3adbe4f7-e374-4533-aa79-cc4a98c529bf.jpeg',
          '<p><5-e',
-         '6999.00', '9991', '1', NULL, '2017-04-13 21:45:41'),
+         '6999.00', '9991', '1', NULL, '2017-04-13 21:45:41');
   
 COMMIT;
 
