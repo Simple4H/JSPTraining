@@ -28,16 +28,16 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from simple_product
-    where id = #{id,jdbcType=INTEGER}
+    DELETE FROM simple_product
+    WHERE id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.simple.pojo.Product" >
-    insert into simple_product (id, category_id, name, 
+    INSERT INTO simple_product (id, category_id, name,
       subtitle, main_image, sub_images, 
       detail, price, stock, 
       status, create_time, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+    VALUES (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
       #{subtitle,jdbcType=VARCHAR}, #{mainImage,jdbcType=VARCHAR}, #{subImages,jdbcType=VARCHAR}, 
       #{detail,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, 
       #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
@@ -162,8 +162,8 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.simple.pojo.Product" >
-    update simple_product
-    set category_id = #{categoryId,jdbcType=INTEGER},
+    UPDATE simple_product
+    SET category_id = #{categoryId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       subtitle = #{subtitle,jdbcType=VARCHAR},
       main_image = #{mainImage,jdbcType=VARCHAR},
@@ -174,6 +174,11 @@
       status = #{status,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    WHERE id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getProductList" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM simple_product
+  </select>
 </mapper>
