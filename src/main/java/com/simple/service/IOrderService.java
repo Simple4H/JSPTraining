@@ -1,5 +1,6 @@
 package com.simple.service;
 
+import com.github.pagehelper.PageInfo;
 import com.simple.common.ServerResponse;
 import com.simple.pojo.Order;
 
@@ -9,4 +10,6 @@ import com.simple.pojo.Order;
 public interface IOrderService {
 
     ServerResponse<Order> createOrder(String orderNo, String userId, String shippingId, String payment, int paymentType, String postage, int status);
+
+    ServerResponse<PageInfo> getOrderList(String userId, int pageNum, int pageSize);
 }

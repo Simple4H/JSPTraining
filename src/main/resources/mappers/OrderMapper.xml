@@ -202,10 +202,16 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 
-    <insert id="createOrder" parameterType="map" >
+    <insert id="createOrder" parameterType="map">
         INSERT INTO simple_order (order_no, user_id, shipping_id, payment, payment_type, postage, status, create_time, update_time)
         VALUES
             (#{orderNo}, #{userId}, #{shippingId}, #{payment}, #{paymentType}, #{postage}, #{status}, now(),
              now())
     </insert>
+
+    <select id="getOrderList" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM simple_order WHERE user_id = #{userId}
+    </select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.simple.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.simple.common.Const;
 import com.simple.common.ResponseCode;
 import com.simple.common.ServerResponse;
@@ -27,20 +28,33 @@ public class OrderController {
     @Autowired
     private IOrderService iOrderService;
 
-    @RequestMapping(value = "create_order.do",method = RequestMethod.POST)
+    @RequestMapping(value = "create_order.do", method = RequestMethod.POST)
     @ResponseBody
-    public ServerResponse<Order> createOrder(@RequestBody Map map, HttpSession session){
+    public ServerResponse<Order> createOrder(@RequestBody Map map, HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),ResponseCode.NEED_LOGIN.getDesc());
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         String orderNo = DateUtil.dateChange(String.valueOf(user.getId()));
         String userId = String.valueOf(user.getId());
         String shippingId = (String) map.get("shippingId");
         String payment = (String) map.get("payment");
         String postage = (String) map.get("postage");
-        return iOrderService.createOrder(orderNo,userId,shippingId,
-                payment,Const.PaymentTypeEnum.OFFLINE_PAY.getCode(),postage,Const.OrderStatusEnum.NO_PAY.getCode());
+        return iOrderService.createOrder(orderNo, userId, shippingId,
+                payment, Const.PaymentTypeEnum.OFFLINE_PAY.getCode(), postage, Const.OrderStatusEnum.NO_PAY.getCode());
 
+    }
+
+    @RequestMapping(value = "get_order_list.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<PageInfo> getOrderList(HttpSession session, @RequestBody Map map) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
+        }
+        String userId = String.valueOf(user.getId());
+        int pageNum = Integer.parseInt((String) map.get("pageNum"));
+        int pageSize = Integer.parseInt((String) map.get("pageSize"));
+        return iOrderService.getOrderList(userId, pageNum, pageSize);
     }
 }
