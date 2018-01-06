@@ -21,6 +21,17 @@ public class CartServiceImpl implements ICartService {
     private CartMapper cartMapper;
 
     public ServerResponse<String> addNewProduct(int userId,int productId,int quantity) {
+        //检查产品是否已经在购物车
+        int resultFind = cartMapper.findProductIdExist(productId);
+        if (resultFind > 0 ) {
+            //如果已经存在，就修改
+            int resultUpdate = cartMapper.updateProductQuantity(productId, quantity);
+            if (resultUpdate > 0 ){
+                return ServerResponse.createBySuccessMessage("修改数量成功");
+            }
+            return ServerResponse.createByErrorMessage("修改数量错误");
+        }
+        //不存在则新增
         int resultCount = cartMapper.addNewProduct(userId,productId,quantity);
         if (resultCount > 0){
             return ServerResponse.createBySuccessMessage("加入购物车成功");

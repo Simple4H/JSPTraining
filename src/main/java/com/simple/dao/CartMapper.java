@@ -18,6 +18,10 @@ public interface CartMapper {
 
     int updateByPrimaryKey(Cart record);
 
+    int findProductIdExist(int productId);
+
+    int updateProductQuantity(@Param("productId")int productId,@Param("quantity")int quantity);
+
     int addNewProduct(@Param("userId") int userId,@Param("productId") int productId,@Param("quantity") int quantity);
 
     List<Cart> getCartList();

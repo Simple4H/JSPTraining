@@ -117,6 +117,18 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
 
+    <select id="findProductIdExist" resultType="int" parameterType="java.lang.Integer">
+        SELECT count(1)
+        FROM simple_cart
+        WHERE product_id = #{productId}
+    </select>
+
+    <update id="updateProductQuantity" parameterType="java.lang.Integer">
+        UPDATE simple_cart
+        SET quantity = #{quantity}
+        WHERE product_id = #{productId}
+    </update>
+
     <insert id="addNewProduct" parameterType="Integer">
         INSERT simple_cart VALUES
             (NULL, #{userId}, #{productId}, #{quantity}, 1, now(), now())
