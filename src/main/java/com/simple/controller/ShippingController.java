@@ -2,6 +2,7 @@ package com.simple.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.simple.common.Const;
+import com.simple.common.ResponseCode;
 import com.simple.common.ServerResponse;
 import com.simple.pojo.User;
 import com.simple.service.IShippingService;
@@ -31,7 +32,7 @@ public class ShippingController {
     public ServerResponse<String> addShippingAddress(HttpSession session, @RequestBody Map map) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorMessage("用户未登录，无法新建新的收货地址");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         String userId = String.valueOf(user.getId());
         String receiverName = (String) map.get("receiverName");
@@ -51,7 +52,7 @@ public class ShippingController {
     public ServerResponse<String> deleteShippingAddress(HttpSession session, @RequestBody Map map) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorMessage("用户未登录，无法新建新的收货地址");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         String shippingId = (String) map.get("shippingId");
         String userId = String.valueOf(user.getId());
@@ -65,7 +66,7 @@ public class ShippingController {
     public ServerResponse<PageInfo> getShippingAddress(@RequestBody Map map, HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorMessage("用户未登录，无法查看收货地址");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         int pageNum = Integer.parseInt(String.valueOf(map.get("pageNum")));
         int pageSize = Integer.parseInt(String.valueOf(map.get("pageSize")));
@@ -78,7 +79,7 @@ public class ShippingController {
     public ServerResponse<String> updateShippingAddress(HttpSession session, @RequestBody Map map) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorMessage("用户未登录，无法更新收货地址");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         String userId = String.valueOf(user.getId());
         String shippingId = (String) map.get("shippingId");

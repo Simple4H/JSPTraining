@@ -115,6 +115,7 @@ public class UserController {
     public ServerResponse<String> logout(HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
+            session.removeAttribute(Const.CURRENT_USER);
             return ServerResponse.createBySuccessMessage("用户已经登出");
         }
         return ServerResponse.createBySuccessMessage("登出成功");
@@ -126,7 +127,7 @@ public class UserController {
     public ServerResponse<User> getUserInformation(HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorMessage("用户未登录，请登录");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         return iUserService.getUserInformation(user.getUsername());
     }
@@ -137,7 +138,7 @@ public class UserController {
     public ServerResponse<String> updateQuestionAndAnswer(@RequestBody Map map, HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorMessage("用户未登录，请登录");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         String question = (String) map.get("question");
         String answer = (String) map.get("answer");
@@ -150,7 +151,7 @@ public class UserController {
     public ServerResponse checkAdmin(HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
-            return ServerResponse.createByErrorMessage("用户未登录，请登录");
+            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         return iUserService.checkAdmin(user);
     }
