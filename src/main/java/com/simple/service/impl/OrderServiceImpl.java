@@ -42,10 +42,11 @@ public class OrderServiceImpl implements IOrderService {
         //获取购物车的产品数量
         int a = cart.getQuantity();
         BigDecimal quantity = new BigDecimal(a);
-        //获取产品的价格
+        //获取产品的单价
         List<Product> productList = productMapper.getProductById(productId);
         Product product = productList.get(0);
         BigDecimal price = product.getPrice();
+        //获取总金额
         BigDecimal payment = price.multiply(quantity);
         int resultCount = orderMapper.createOrder(orderNo, userId, shippingId, payment, Const.PaymentTypeEnum.OFFLINE_PAY.getCode(), "8", Const.OrderStatusEnum.NO_PAY.getCode());
         //执行到这里说明生成订单ojbk
