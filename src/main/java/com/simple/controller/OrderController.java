@@ -7,7 +7,6 @@ import com.simple.common.ServerResponse;
 import com.simple.pojo.Order;
 import com.simple.pojo.User;
 import com.simple.service.IOrderService;
-import com.simple.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,14 +34,9 @@ public class OrderController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
-        String orderNo = DateUtil.dateChange(String.valueOf(user.getId()));
-        String userId = String.valueOf(user.getId());
-        String shippingId = (String) map.get("shippingId");
-        String payment = (String) map.get("payment");
-        String postage = (String) map.get("postage");
-        return iOrderService.createOrder(orderNo, userId, shippingId,
-                payment, Const.PaymentTypeEnum.OFFLINE_PAY.getCode(), postage, Const.OrderStatusEnum.NO_PAY.getCode());
-
+        int userId = user.getId();
+        String  shippingId = (String) map.get("shippingId");
+        return iOrderService.createOrder(userId,shippingId) ;
     }
 
     @RequestMapping(value = "get_order_list.do", method = RequestMethod.POST)

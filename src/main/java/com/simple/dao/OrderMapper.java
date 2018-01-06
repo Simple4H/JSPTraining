@@ -3,6 +3,7 @@ package com.simple.dao;
 import com.simple.pojo.Order;
 import org.apache.ibatis.annotations.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface OrderMapper {
@@ -18,7 +19,7 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    int createOrder(@Param("orderNo") String orderNo, @Param("userId") String userId, @Param("shippingId") String shippingId, @Param("payment") String payment, @Param("paymentType") int paymentType, @Param("postage") String postage, @Param("status") int status);
+    int createOrder(@Param("orderNo") String orderNo, @Param("userId") int userId, @Param("shippingId") String shippingId, @Param("payment") BigDecimal payment, @Param("paymentType") int paymentType, @Param("postage") String postage, @Param("status") int status);
 
     List<Order> getOrderList(String userId);
 }

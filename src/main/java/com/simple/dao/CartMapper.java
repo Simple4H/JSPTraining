@@ -25,4 +25,8 @@ public interface CartMapper {
     int addNewProduct(@Param("userId") int userId,@Param("productId") int productId,@Param("quantity") int quantity);
 
     List<Cart> getCartList();
+
+    //清空购物车
+    int deleteAllProduct();
+
 }

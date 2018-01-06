@@ -139,4 +139,9 @@
         <include refid="Base_Column_List"/>
         from simple_cart
     </select>
+
+    <delete id="deleteAllProduct" parameterType="map">
+        DELETE FROM simple_cart
+        WHERE checked = 1;
+    </delete>
 </mapper>

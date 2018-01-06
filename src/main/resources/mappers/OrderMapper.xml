@@ -203,9 +203,9 @@
     </update>
 
     <insert id="createOrder" parameterType="map">
-        INSERT INTO simple_order (order_no, user_id, shipping_id, payment, payment_type, postage, status, create_time, update_time)
+        INSERT INTO simple_order (id, order_no, user_id, shipping_id, payment, payment_type, postage, status, create_time, update_time)
         VALUES
-            (#{orderNo}, #{userId}, #{shippingId}, #{payment}, #{paymentType}, #{postage}, #{status}, now(),
+            (NULL, #{orderNo}, #{userId}, #{shippingId}, #{payment}, #{paymentType}, #{postage}, #{status}, now(),
              now())
     </insert>
 
