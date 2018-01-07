@@ -131,7 +131,7 @@
 "username": "simple",<br>
 "password": "",<br>
 "email": "crescentcxm@gmail.com",<br>
-"phone": "18578230461",<br>
+"phone": "???????????",<br>
 "question": "没有bug",<br>
 "answer": "是的",<br>
 "role": 1,<br>
@@ -160,7 +160,7 @@
 {<br>
   "receiverName":"huangbude",<br>
   "receiverPhone":"",<br>
-  "receiverMobile":"18578230461",<br>
+  "receiverMobile":"???????????",<br>
   "receiverProvince":"广东省",<br>
   "receiverCity":"东莞市",<br>
   "receiverDistrict":"南城区",<br>
@@ -229,7 +229,7 @@
   "shippingId":"15",<br>
   "receiverName":"123123",<br>
   "receiverPhone":"",<br>
-  "receiverMobile":"18578230461",<br>
+  "receiverMobile":"???????????",<br>
   "receiverProvince":"广东省",<br>
   "receiverCity":"东莞市",<br>
   "receiverDistrict":"南城区",<br>
