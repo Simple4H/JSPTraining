@@ -26,6 +26,7 @@ public class CartController {
     @Autowired
     private ICartService iCartService;
 
+    //产品加入购物车
     @RequestMapping(value = "add_new_product.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> addNewProduct(@RequestBody Map map, HttpSession session) {
@@ -39,6 +40,7 @@ public class CartController {
         return iCartService.addNewProduct(userId, productId, quantity);
     }
 
+    //获取购物车列表
     @RequestMapping(value = "get_cart_list.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<PageInfo> getCartList(HttpSession session,@RequestBody Map map){
