@@ -2,6 +2,7 @@
 **_User Module_**
 <br>
 - login.do<br>
+http://localhost:8080/user/login.do<br>
 输出<br>
 {<br>
   "username": "simple",<br>
@@ -26,6 +27,7 @@
 "success": true<br>
 }<br>
 - register.do<br>
+http://localhost:8080/user/register.do<br>
 输入<br>
 {<br>
   "username": "huangbude",<br>
@@ -43,6 +45,7 @@
 "success": true<br>
 }<br>
 - update_user_email.do<br>
+http://localhost:8080/user/update_user_email.do<br>
 输入<br>
 {<br>
   "email":"crescentcxm@gmail.com"<br>
@@ -55,6 +58,7 @@
 "success": false<br>
 }<br>
 - update_user_phone.do<br>
+http://localhost:8080/user/update_user_phone.do<br>
 输入 <br>
 {<br>
   "phone":"???????????"<br>
@@ -67,6 +71,7 @@
 "success": true<br>
 }<br>
 - update_user_password.do<br>
+http://localhost:8080/user/update_user_password.do<br>
 输入<br>
 {<br>
   "oldPassword":"123123123",<br>
@@ -80,6 +85,7 @@
 "success": true<br>
 }<br>
 - forget_password_check_answer.do<br>
+http://localhost:8080/user/forget_password_check_answer.do<br>
 输入<br>
 {<br>
   "username":"huangbude",<br>
@@ -94,6 +100,7 @@
 "success": true<br>
 }<br>
 - reset_password.do<br>
+http://localhost:8080/user/reset_password.do<br>
 输入<br>
 {<br>
   "username":"huangbude",<br>
@@ -108,6 +115,7 @@
 "success": true<br>
 }<br>
 - logout.do<br>
+http://localhost:8080/user/logout.do<br>
 输入<br>
 {<br>
 }<br>
@@ -119,6 +127,7 @@
 "success": true<br>
 }<br>
 - get_user_information.do<br>
+http://localhost:8080/user/get_user_information.do<br>
 输入<br>
 {<br>
 }<br>
@@ -141,6 +150,7 @@
 "success": true<br>
 }<br>
 - update_question_and_answer.do<br>
+http://localhost:8080/user/update_question_and_answer.do<br>
 输入<br>
 {<br>
   "question":"没有bug",<br>
@@ -156,6 +166,7 @@
 
 **_Shipping Module_**
 - add_shipping_address.do<br>
+http://localhost:8080/shipping/add_shipping_address.do<br>
 输入<br>
 {<br>
   "receiverName":"huangbude",<br>
@@ -175,6 +186,7 @@
 "success": true<br>
 }<br>
 - delete_shipping_address.do<br>
+http://localhost:8080/shipping/delete_shipping_address.do<br>
 输入<br>
 {<br>
   "shippingId":"17"<br>
@@ -187,6 +199,7 @@
 "success": false<br>
 }<br>
 - get_shipping_address.do<br>
+http://localhost:8080/shipping/get_shipping_address.do<br>
 输入<br>
 {<br>
   "pageNum":"1",<br>
@@ -224,6 +237,7 @@
 "success": true<br>
 }<br>
 - update_shipping_address.do<br>
+http://localhost:8080/shipping/update_shipping_address.do<br>
 输入<br>
 {<br>
   "shippingId":"15",<br>
@@ -246,6 +260,7 @@
 
 **_Product Module_**
 - get_product_list.do<br>
+http://localhost:8080/product/get_product_list.do<br>
 输入<br>
 {
   "pageNum":"1",
@@ -286,6 +301,7 @@
 
 **_Order Module_**
 - create_order.do<br>
+http://localhost:8080/order/create_order.do<br>
 输入<br>
 {<br>
   "shippingId":"13"<br>
@@ -298,6 +314,7 @@
 "success": true<br>
 }<br>
 - get_order_list.do<br>
+http://localhost:8080/order/get_order_list.do<br>
 输入<br>
 {
   "pageNum":"2",
