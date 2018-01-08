@@ -356,6 +356,7 @@ http://localhost:8080/order/get_order_list.do<br>
 
 **_Cart Module_**
 - add_new_product.do<br>
+http://localhost:8080/cart/add_new_product.do<br>
 输入<br>
 {<br>
   "productId":"100001",<br>
@@ -369,6 +370,7 @@ http://localhost:8080/order/get_order_list.do<br>
 "success": true<br>
 }<br>
 - get_cart_list.do<br>
+http://localhost:8080/cart/get_cart_list.do<br>
 输入<br>
 {<br>
   "pageNum":"1",<br>
