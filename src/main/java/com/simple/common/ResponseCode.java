@@ -4,8 +4,8 @@ package com.simple.common;
  * Create by S I M P L E on 2017/12/26
  */
 public enum  ResponseCode {
-    SUCCESS(0,"SUCCESS"),
-    ERROR(1,"ERROR"),
+    SUCCESS(1,"SUCCESS"),
+    ERROR(0,"ERROR"),
     NEED_LOGIN(10,"NEEDLOGIN");
 
     private final int code;

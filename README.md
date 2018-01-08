@@ -10,7 +10,7 @@ http://localhost:8080/user/login.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "SUCCESS",<br>
 "data":{<br>
 "id": 15,<br>
@@ -39,7 +39,7 @@ http://localhost:8080/user/register.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "注册成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -65,7 +65,7 @@ http://localhost:8080/user/update_user_phone.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "修改手机号码成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -79,7 +79,7 @@ http://localhost:8080/user/update_user_password.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "修改密码成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -94,7 +94,7 @@ http://localhost:8080/user/forget_password_check_answer.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "获取token成功",<br>
 "data": "583c72ff-7adf-4e5c-8bfe-4f539f4d7a62",<br>
 "success": true<br>
@@ -109,7 +109,7 @@ http://localhost:8080/user/reset_password.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "修改密码成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -121,7 +121,7 @@ http://localhost:8080/user/logout.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "登出成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -133,7 +133,7 @@ http://localhost:8080/user/get_user_information.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "查询成功",<br>
 "data":{<br>
 "id": 15,<br>
@@ -158,7 +158,7 @@ http://localhost:8080/user/update_question_and_answer.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "修改问题和答案成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -180,7 +180,7 @@ http://localhost:8080/shipping/add_shipping_address.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "新建收货地址成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -207,7 +207,7 @@ http://localhost:8080/shipping/get_shipping_address.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "查询到该用户的收货地址",<br>
 "data":{<br>
 "pageNum": 1,<br>
@@ -252,7 +252,7 @@ http://localhost:8080/shipping/update_shipping_address.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "更新收货地址成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -268,7 +268,7 @@ http://localhost:8080/product/get_product_list.do<br>
 }
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "查询所有的产品",<br>
 "data":{<br>
 "pageNum": 1,<br>
@@ -308,7 +308,7 @@ http://localhost:8080/order/create_order.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "创建订单成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -322,7 +322,7 @@ http://localhost:8080/order/get_order_list.do<br>
 }
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "查询到该用户的订单",<br>
 "data":{<br>
 "pageNum": 1,<br>
@@ -363,7 +363,7 @@ http://localhost:8080/order/get_order_list.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "加入购物车成功",<br>
 "data": null,<br>
 "success": true<br>
@@ -376,7 +376,7 @@ http://localhost:8080/order/get_order_list.do<br>
 }<br>
 输出<br>
 {<br>
-"status": 0,<br>
+"status": 1,<br>
 "msg": "购物车内的商品",<br>
 "data":{<br>
 "pageNum": 1,<br>
