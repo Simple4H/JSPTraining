@@ -107,9 +107,7 @@ CREATE TABLE `simple_order` (
 --  Records of `simple_order`
 -- ----------------------------
 BEGIN;
-INSERT INTO `simple_order` VALUES
-  ('103', '1491753014256', '1', '25', '13998.00', '1', '0', '10', NULL, NULL, NULL, NULL, '2017-12-26 16:56:45',
-   '2017-12-26 16:56:45');
+
 COMMIT;
 
 -- ----------------------------
@@ -147,10 +145,7 @@ CREATE TABLE `simple_order_item` (
 --  Records of `simple_order_item`
 -- ----------------------------
 BEGIN;
-INSERT INTO `simple_order_item` VALUES
-  ('113', '1', '1491753014256', '26', 'Apple iPhone 7 Plus (A1661) 128G 玫瑰金色 移动联通电信4G手机',
-          '241997c4-9e62-4824-b7f0-7425c3c28917.jpeg', '6999.00', '2', '13998.00', '2017-12-26 16:56:45',
-          '2017-12-26 16:56:45');
+
 COMMIT;
 
 -- ----------------------------
@@ -183,9 +178,7 @@ CREATE TABLE `simple_pay_info` (
 --  Records of `simple_pay_info`
 -- ----------------------------
 BEGIN;
-INSERT INTO `simple_pay_info` VALUES
-  ('53', '1', '1492090946105', '1', '2017041321001004300200116250', 'WAIT_BUYER_PAY', '2017-12-26 16:56:45',
-   '2017-12-26 16:56:45');
+
 COMMIT;
 
 -- ----------------------------
@@ -225,12 +218,7 @@ CREATE TABLE `simple_product` (
 --  Records of `simple_product`
 -- ----------------------------
 BEGIN;
-INSERT INTO `simple_product` VALUES
-  ('26', '100002', 'Apple iPhone 7 Plus (A1661) 128G 玫瑰金色 移动联通电信4G手机', 'iPhone 7，现更以红色呈现。',
-         '241997c4-9e62-4824-b7f0-7425c3c28917.jpeg',
-         '241997c4-9e62-4824-b7f0-7425c3c28917.jpeg,b6c56eb0-01baa0f7b2.jpeg,3adbe4f7-e374-4533-aa79-cc4a98c529bf.jpeg',
-         '<p><5-e',
-         '6999.00', '9991', '1', NULL, '2017-04-13 21:45:41');
+
   
 COMMIT;
 
@@ -270,13 +258,7 @@ CREATE TABLE `simple_shipping` (
 --  Records of `simple_shipping`
 -- ----------------------------
 BEGIN;
-INSERT INTO `simple_shipping` VALUES
-  ('4', '13', 'geely', '010', '18688888888', '北京', '北京市', '海淀区', '中关村', '100000', '2017-01-22 14:26:25',
-   '2017-01-22 14:26:25'),
-  ('7', '17', 'Rosen', '13800138000', '13800138000', '北京', '北京', NULL, '中关村', '100000', '2017-03-29 12:11:01',
-   '2017-03-29 12:11:01'),
-  ('29', '1', '吉利', '13800138000', '13800138000', '北京', '北京', '海淀区', '海淀区中关村', '100000', '2017-04-09 18:33:32',
-   '2017-04-09 18:33:32');
+
 COMMIT;
 
 -- ----------------------------
@@ -313,9 +295,7 @@ CREATE TABLE `simple_user` (
 --  Records of `simple_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `simple_user` VALUES
-  ('1', 'simple', '123123123', 'crescentcxm@gmail.com', '18578230461', '问题', '答案', '没有bug',
-   '2017-12-26 16:56:45', '2017-12-26 16:56:45');
+
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

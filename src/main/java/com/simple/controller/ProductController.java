@@ -46,6 +46,7 @@ public class ProductController {
     @Autowired
     private IProductService iProductService;
 
+    //获取产品列表
     @RequestMapping(value = "get_product_list.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<PageInfo> getProductList(@RequestBody Map map) {

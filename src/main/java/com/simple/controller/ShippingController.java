@@ -98,6 +98,7 @@ public class ShippingController {
         return iShippingService.getShippingAddress(pageNum, pageSize, userId);
     }
 
+    //更新收货地址
     @RequestMapping(value = "update_shipping_address.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> updateShippingAddress(HttpSession session, @RequestBody Map map) {

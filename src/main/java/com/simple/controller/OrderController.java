@@ -52,6 +52,7 @@ public class OrderController {
     @Autowired
     private IOrderService iOrderService;
 
+    //新建订单
     @RequestMapping(value = "create_order.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<Order> createOrder(@RequestBody Map map, HttpSession session) {
@@ -64,6 +65,7 @@ public class OrderController {
         return iOrderService.createOrder(userId,shippingId) ;
     }
 
+    //获取订单列表
     @RequestMapping(value = "get_order_list.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<PageInfo> getOrderList(HttpSession session, @RequestBody Map map) {
