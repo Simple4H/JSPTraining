@@ -408,3 +408,41 @@ http://localhost:8080/cart/get_cart_list.do<br>
 },<br>
 "success": true<br>
 }<br>
+**_OrderItem Module_**
+- get_list.do<br>
+http://localhost:8080//order_item/get_list.do<br>
+输入<br>
+{<br>
+  "pageNum":"1",<br>
+  "pageSize":"10"<br>
+}<br>
+输出<br>
+{<br>
+"status": 1,<br>
+"msg": "查询到的订单",<br>
+"data":{<br>
+"pageNum": 1,<br>
+"pageSize": 10,<br>
+"size": 6,<br>
+"startRow": 1,<br>
+"endRow": 6,<br>
+"total": 6,<br>
+"pages": 1,<br>
+"list":[{"id": 1, "userId": 15, "orderNo": 2018010922011915, "productId": 100001, "productName": "三星 galaxy s7",…],<br>
+"prePage": 0,<br>
+"nextPage": 0,<br>
+"isFirstPage": true,<br>
+"isLastPage": true,<br>
+"hasPreviousPage": false,<br>
+"hasNextPage": false,<br>
+"navigatePages": 8,<br>
+"navigatepageNums":[<br>
+1<br>
+],<br>
+"navigateFirstPage": 1,<br>
+"navigateLastPage": 1,<br>
+"firstPage": 1,<br>
+"lastPage": 1<br>
+},<br>
+"success": true<br>
+}<br>
