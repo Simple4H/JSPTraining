@@ -58,19 +58,23 @@ public class OrderServiceImpl implements IOrderService {
 
     public ServerResponse<Order> createOrder(int userId, String shippingId) {
         String orderNo = DateUtil.dateChange(String.valueOf(userId));
+        BigDecimal payment = BigDecimal.valueOf(0);
         List<Cart> cartList = cartMapper.getCartList();
-        Cart cart = cartList.get(0);
-        //获取产品的ID
-        int productId = cart.getProductId();
-        //获取购物车的产品数量
-        int a = cart.getQuantity();
-        BigDecimal quantity = new BigDecimal(a);
-        //获取产品的单价
-        List<Product> productList = productMapper.getProductById(productId);
-        Product product = productList.get(0);
-        BigDecimal price = product.getPrice();
-        //获取总金额
-        BigDecimal payment = price.multiply(quantity);
+        for(int i = 0; i < cartList.size(); i++){
+            Cart cart = cartList.get(i);
+            //获取产品的ID
+            int productId = cart.getProductId();
+            //获取购物车的产品数量
+            int a = cart.getQuantity();
+            BigDecimal quantity = new BigDecimal(a);
+            //获取产品的单价
+            List<Product> productList = productMapper.getProductById(productId);
+            Product product = productList.get(0);
+            BigDecimal price = product.getPrice();
+            //获取总金额
+            BigDecimal productPayment = price.multiply(quantity);
+            payment = payment.add(productPayment);
+        }
         int resultCount = orderMapper.createOrder(orderNo, userId, shippingId, payment, Const.PaymentTypeEnum.OFFLINE_PAY.getCode(), "8", Const.OrderStatusEnum.NO_PAY.getCode());
         //执行到这里说明生成订单ojbk
         if (resultCount > 0){
