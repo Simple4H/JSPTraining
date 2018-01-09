@@ -73,9 +73,10 @@ public class OrderController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
-        String userId = String.valueOf(user.getId());
-        int pageNum = Integer.parseInt((String) map.get("pageNum"));
-        int pageSize = Integer.parseInt((String) map.get("pageSize"));
+        int a =user.getId();
+        String userId = String.valueOf(a);
+        int pageNum = Integer.parseInt(String.valueOf(map.get("pageNum")));
+        int pageSize = Integer.parseInt(String.valueOf(map.get("pageSize")));
         return iOrderService.getOrderList(userId, pageNum, pageSize);
     }
 }

@@ -78,7 +78,8 @@ public class ShippingController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
-        String shippingId = (String) map.get("shippingId");
+        int a = (int) map.get("shippingId");
+        String shippingId = String.valueOf(a);
         String userId = String.valueOf(user.getId());
         return iShippingService.deleteShippingAddress(shippingId, userId);
     }
