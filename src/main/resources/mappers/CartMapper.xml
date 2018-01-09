@@ -125,7 +125,7 @@
 
     <update id="updateProductQuantity" parameterType="java.lang.Integer">
         UPDATE simple_cart
-        SET quantity = #{quantity}
+        SET quantity = quantity + 1
         WHERE product_id = #{productId}
     </update>
 
