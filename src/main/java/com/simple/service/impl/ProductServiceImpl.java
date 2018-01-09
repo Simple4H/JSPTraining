@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Create by S I M P L E on 2018/01/05
+ *
  *                       _oo0oo_
  #                      o8888888o
  #                      88" . "88
@@ -51,6 +52,5 @@ public class ProductServiceImpl implements IProductService {
             return ServerResponse.createBySuccess("查询所有的产品",productPageInfo);
         }
         return ServerResponse.createByErrorMessage("没有找到任何的产品");
-
     }
 }
