@@ -1,5 +1,5 @@
 # JSPTraining
-**_User Module_**
+**_User Module(用户模块)_**
 <br>
 - login.do<br>
 http://localhost:8080/user/login.do<br>
@@ -164,7 +164,7 @@ http://localhost:8080/user/update_question_and_answer.do<br>
 "success": true<br>
 }<br>
 
-**_Shipping Module_**
+**_Shipping Module(购物车模块)_**
 - add_shipping_address.do<br>
 http://localhost:8080/shipping/add_shipping_address.do<br>
 输入<br>
@@ -258,7 +258,7 @@ http://localhost:8080/shipping/update_shipping_address.do<br>
 "success": true<br>
 }<br>
 
-**_Product Module_**
+**_Product Module(产品模块)_**
 - get_product_list.do<br>
 http://localhost:8080/product/get_product_list.do<br>
 输入<br>
@@ -299,7 +299,7 @@ http://localhost:8080/product/get_product_list.do<br>
 "success": true<br>
 }<br>
 
-**_Order Module_**
+**_Order Module(订单模块)_**
 - create_order.do<br>
 http://localhost:8080/order/create_order.do<br>
 输入<br>
@@ -408,7 +408,7 @@ http://localhost:8080/cart/get_cart_list.do<br>
 },<br>
 "success": true<br>
 }<br>
-**_OrderItem Module_**
+**_OrderItem Module(订单详情模块)_**
 - get_list.do<br>
 http://localhost:8080//order_item/get_list.do<br>
 输入<br>
