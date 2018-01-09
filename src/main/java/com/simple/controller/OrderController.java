@@ -61,7 +61,8 @@ public class OrderController {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         int userId = user.getId();
-        String  shippingId = (String) map.get("shippingId");
+        int  a = (int) map.get("shippingId");
+        String shippingId = String.valueOf(a);
         return iOrderService.createOrder(userId,shippingId) ;
     }
 
