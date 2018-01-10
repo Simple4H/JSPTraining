@@ -21,29 +21,29 @@ import java.util.List;
 
 /**
  * Create by S I M P L E on 2018/01/05
- *                       _oo0oo_
- #                      o8888888o
- #                      88" . "88
- #                      (| -_- |)
- #                      0\  =  /0
- #                    ___/`---'\___
- #                  .' \\|     |# '.
- #                 / \\|||  :  |||# \
- #                / _||||| -:- |||||- \
- #               |   | \\\  -  #/ |   |
- #               | \_|  ''\---/''  |_/ |
- #               \  .-\__  '-'  ___/-. /
- #             ___'. .'  /--.--\  `. .'___
- #          ."" '<  `.___\_<|>_/___.' >' "".
- #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- #         \  \ `_.   \_ __\ /__ _/   .-` /  /
- #     =====`-.____`.___ \_____/___.-`___.-'=====
- #                       `=---='
- #
- #
- #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- #
- #               佛祖保佑         永无BUG
+ * _oo0oo_
+ * #                      o8888888o
+ * #                      88" . "88
+ * #                      (| -_- |)
+ * #                      0\  =  /0
+ * #                    ___/`---'\___
+ * #                  .' \\|     |# '.
+ * #                 / \\|||  :  |||# \
+ * #                / _||||| -:- |||||- \
+ * #               |   | \\\  -  #/ |   |
+ * #               | \_|  ''\---/''  |_/ |
+ * #               \  .-\__  '-'  ___/-. /
+ * #             ___'. .'  /--.--\  `. .'___
+ * #          ."" '<  `.___\_<|>_/___.' >' "".
+ * #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ * #         \  \ `_.   \_ __\ /__ _/   .-` /  /
+ * #     =====`-.____`.___ \_____/___.-`___.-'=====
+ * #                       `=---='
+ * #
+ * #
+ * #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * #
+ * #               佛祖保佑         永无BUG
  */
 @Service("iOrderService")
 public class OrderServiceImpl implements IOrderService {
@@ -64,7 +64,7 @@ public class OrderServiceImpl implements IOrderService {
         String orderNo = DateUtil.dateChange(String.valueOf(userId));
         BigDecimal payment = BigDecimal.valueOf(0);
         List<Cart> cartList = cartMapper.getCartList();
-        for(int i = 0; i < cartList.size(); i++){
+        for (int i = 0; i < cartList.size(); i++) {
             Cart cart = cartList.get(i);
             //获取产品的ID
             int productId = cart.getProductId();
@@ -75,19 +75,20 @@ public class OrderServiceImpl implements IOrderService {
             List<Product> productList = productMapper.getProductById(productId);
             Product product = productList.get(0);
             String productName = product.getName();
+            String mainImage = product.getMainImage();
             BigDecimal price = product.getPrice();
             //获取总金额
             BigDecimal productPayment = price.multiply(quantity);
             payment = payment.add(productPayment);
-            int orderItemCount = orderItemMapper.insertOrderItem(userId,orderNo,productId,productName,price,quantity,productPayment);
-            if (orderItemCount == 0){
+            int orderItemCount = orderItemMapper.insertOrderItem(userId, orderNo, productId, productName, mainImage, price, quantity, productPayment);
+            if (orderItemCount == 0) {
                 return ServerResponse.createByErrorMessage("插入订单异常");
             }
         }
         int resultCount = orderMapper.createOrder(orderNo, userId, shippingId, payment, Const.PaymentTypeEnum.OFFLINE_PAY.getCode(), "8", Const.OrderStatusEnum.NO_PAY.getCode());
 
         //执行到这里说明生成订单ojbk
-        if (resultCount > 0){
+        if (resultCount > 0) {
             //清空购物车
             cartMapper.deleteAllProduct();
             return ServerResponse.createBySuccessMessage("创建订单成功");

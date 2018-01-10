@@ -23,5 +23,5 @@ public interface OrderItemMapper {
     List<OrderItem> getOrderItemList(int userId);
 
     //订单详情
-    int insertOrderItem(@Param("userId") int userId,@Param("orderNo") String orderNo,@Param("productId") int productId,@Param("productName") String productName,@Param("price") BigDecimal price, @Param("quantity")BigDecimal quantity,@Param("productPayment")BigDecimal productPayment);
+    int insertOrderItem(@Param("userId") int userId,@Param("orderNo") String orderNo,@Param("productId") int productId,@Param("productName") String productName,@Param("mainImage")String mainImage,@Param("price") BigDecimal price, @Param("quantity")BigDecimal quantity,@Param("productPayment")BigDecimal productPayment);
 }

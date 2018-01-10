@@ -173,9 +173,10 @@
     </select>
 
     <insert id="insertOrderItem" parameterType="map">
-        INSERT INTO simple_order_item (id, user_id, order_no, product_id, product_name, current_unit_price, quantity, total_price, create_time, update_time)
+        INSERT INTO simple_order_item (id, user_id, order_no, product_id, product_name, product_image, current_unit_price, quantity, total_price, create_time, update_time)
         VALUES
-            (NULL, #{userId}, #{orderNo}, #{productId}, #{productName}, #{price}, #{quantity}, #{productPayment}, now(),
-             now())
+            (NULL, #{userId}, #{orderNo}, #{productId}, #{productName}, #{mainImage}, #{price}, #{quantity},
+                   #{productPayment}, now(),
+                   now())
     </insert>
 </mapper>

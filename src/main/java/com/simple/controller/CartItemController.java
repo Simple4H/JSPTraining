@@ -64,8 +64,8 @@ public class CartItemController {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         int userId = user.getId();
-        int pageNum = Integer.parseInt(String.valueOf(map.get("pageNum")));
-        int pageSize = Integer.parseInt(String.valueOf(map.get("pageSize")));
+        int pageNum = (Integer) map.get("pageNum");
+        int pageSize = (Integer) map.get("pageSize");
         return iOrderItemService.getOrderItemList(pageNum, pageSize, userId);
     }
 }
