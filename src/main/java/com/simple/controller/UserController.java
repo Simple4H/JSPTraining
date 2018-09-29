@@ -146,7 +146,7 @@ public class UserController {
     }
 
     //获取用户信息
-    @RequestMapping(value = "get_user_information.do", method = RequestMethod.POST)
+    @RequestMapping(value = "get_user_info.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> getUserInformation(HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
