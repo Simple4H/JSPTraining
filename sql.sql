@@ -2,7 +2,8 @@ create database db_jsptraining;
 use db_jsptraining;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
-
+create database db_jsptraining charset utf8;
+use db_jsptraining;
 -- ----------------------------
 --  Table structure for `simple_cart`
 -- ----------------------------
