@@ -1,3 +1,5 @@
+create database db_jsptraining;
+use db_jsptraining;
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
