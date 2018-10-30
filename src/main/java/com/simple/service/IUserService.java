@@ -52,4 +52,6 @@ public interface IUserService {
 
     ServerResponse checkAdmin(User user);
 
+    ServerResponse getQuestionInformation(String username);
+
 }

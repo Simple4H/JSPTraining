@@ -14,29 +14,29 @@ import java.util.UUID;
 
 /**
  * Create by S I M P L E on 2018/01/05
- *                       _oo0oo_
- #                      o8888888o
- #                      88" . "88
- #                      (| -_- |)
- #                      0\  =  /0
- #                    ___/`---'\___
- #                  .' \\|     |# '.
- #                 / \\|||  :  |||# \
- #                / _||||| -:- |||||- \
- #               |   | \\\  -  #/ |   |
- #               | \_|  ''\---/''  |_/ |
- #               \  .-\__  '-'  ___/-. /
- #             ___'. .'  /--.--\  `. .'___
- #          ."" '<  `.___\_<|>_/___.' >' "".
- #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- #         \  \ `_.   \_ __\ /__ _/   .-` /  /
- #     =====`-.____`.___ \_____/___.-`___.-'=====
- #                       `=---='
- #
- #
- #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- #
- #               佛祖保佑         永无BUG
+ * _oo0oo_
+ * #                      o8888888o
+ * #                      88" . "88
+ * #                      (| -_- |)
+ * #                      0\  =  /0
+ * #                    ___/`---'\___
+ * #                  .' \\|     |# '.
+ * #                 / \\|||  :  |||# \
+ * #                / _||||| -:- |||||- \
+ * #               |   | \\\  -  #/ |   |
+ * #               | \_|  ''\---/''  |_/ |
+ * #               \  .-\__  '-'  ___/-. /
+ * #             ___'. .'  /--.--\  `. .'___
+ * #          ."" '<  `.___\_<|>_/___.' >' "".
+ * #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ * #         \  \ `_.   \_ __\ /__ _/   .-` /  /
+ * #     =====`-.____`.___ \_____/___.-`___.-'=====
+ * #                       `=---='
+ * #
+ * #
+ * #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * #
+ * #               佛祖保佑         永无BUG
  */
 @Service("iUserService")
 public class UserServiceImpl implements IUserService {
@@ -164,9 +164,21 @@ public class UserServiceImpl implements IUserService {
 
     //校验是不是管理员
     public ServerResponse checkAdmin(User user) {
-        if (user.getRole() == Const.Role.ROLE_ADMIN){
+        if (user.getRole() == Const.Role.ROLE_ADMIN) {
             return ServerResponse.createBySuccessMessage("是管理员");
         }
         return ServerResponse.createByErrorMessage("不是管理员");
+    }
+
+    public ServerResponse getQuestionInformation(String username) {
+        int result = userMapper.checkUsername(username);
+        if (result > 0) {
+            String question = userMapper.getQuestionInformation(username);
+            if (!StringUtils.isEmpty(question)) {
+                return ServerResponse.createBySuccess("获取成功", question);
+            }
+            return ServerResponse.createBySuccessMessage("发生异常");
+        }
+        return ServerResponse.createByErrorMessage("用户不存在");
     }
 }

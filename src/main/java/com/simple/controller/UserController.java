@@ -17,37 +17,41 @@ import java.util.Map;
 
 /**
  * Create by S I M P L E on 2017/12/26
- *
- #                       _oo0oo_
- #                      o8888888o
- #                      88" . "88
- #                      (| -_- |)
- #                      0\  =  /0
- #                    ___/`---'\___
- #                  .' \\|     |# '.
- #                 / \\|||  :  |||# \
- #                / _||||| -:- |||||- \
- #               |   | \\\  -  #/ |   |
- #               | \_|  ''\---/''  |_/ |
- #               \  .-\__  '-'  ___/-. /
- #             ___'. .'  /--.--\  `. .'___
- #          ."" '<  `.___\_<|>_/___.' >' "".
- #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- #         \  \ `_.   \_ __\ /__ _/   .-` /  /
- #     =====`-.____`.___ \_____/___.-`___.-'=====
- #                       `=---='
- #
- #
- #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- #
- #               佛祖保佑         永无BUG
+ * <p>
+ * #                       _oo0oo_
+ * #                      o8888888o
+ * #                      88" . "88
+ * #                      (| -_- |)
+ * #                      0\  =  /0
+ * #                    ___/`---'\___
+ * #                  .' \\|     |# '.
+ * #                 / \\|||  :  |||# \
+ * #                / _||||| -:- |||||- \
+ * #               |   | \\\  -  #/ |   |
+ * #               | \_|  ''\---/''  |_/ |
+ * #               \  .-\__  '-'  ___/-. /
+ * #             ___'. .'  /--.--\  `. .'___
+ * #          ."" '<  `.___\_<|>_/___.' >' "".
+ * #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ * #         \  \ `_.   \_ __\ /__ _/   .-` /  /
+ * #     =====`-.____`.___ \_____/___.-`___.-'=====
+ * #                       `=---='
+ * #
+ * #
+ * #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * #
+ * #               佛祖保佑         永无BUG
  */
 @RequestMapping(value = "/user/")
 @Controller
 public class UserController {
 
+    private final IUserService iUserService;
+
     @Autowired
-    private IUserService iUserService;
+    public UserController(IUserService iUserService) {
+        this.iUserService = iUserService;
+    }
 
     //注册
     @RequestMapping(value = "register.do", method = RequestMethod.POST)
@@ -114,7 +118,7 @@ public class UserController {
     }
 
     //忘记密码--获取token
-    @RequestMapping(value = "forget_password_check_answer.do", method = RequestMethod.POST)
+    @RequestMapping(value = "forget_check_answer.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> forgetPasswordCheckAnswer(@RequestBody Map map) {
         String username = (String) map.get("username");
@@ -124,7 +128,7 @@ public class UserController {
     }
 
     //忘记密码--重置密码
-    @RequestMapping(value = "reset_password.do", method = RequestMethod.POST)
+    @RequestMapping(value = "forget_reset_password.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<String> resetPassword(@RequestBody Map map) {
         String username = (String) map.get("username");
@@ -146,7 +150,7 @@ public class UserController {
     }
 
     //获取用户信息
-    @RequestMapping(value = "get_user_information.do", method = RequestMethod.POST)
+    @RequestMapping(value = "get_user_info.do", method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse<User> getUserInformation(HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
@@ -179,4 +183,12 @@ public class UserController {
         }
         return iUserService.checkAdmin(user);
     }
+
+    @RequestMapping(value = "get_question_information.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse getQuestionInformation(@RequestBody Map map) {
+        String username = (String) map.get("username");
+        return iUserService.getQuestionInformation(username);
+    }
+
 }

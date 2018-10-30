@@ -229,4 +229,9 @@
         SET question = #{question}, answer = #{answer}
         WHERE username = #{username}
     </update>
+
+    <select id="getQuestionInformation" resultType="string" parameterType="string">
+        select question
+        from simple_user where username = #{username}
+    </select>
 </mapper>

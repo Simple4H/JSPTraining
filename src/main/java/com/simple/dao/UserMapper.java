@@ -51,4 +51,6 @@ public interface UserMapper {
 
     //更新用户问题和答案
     int updateQuestionAndAnswer(@Param("question")String question,@Param("answer")String answer,@Param("username")String username);
+
+    String getQuestionInformation(String username);
 }
