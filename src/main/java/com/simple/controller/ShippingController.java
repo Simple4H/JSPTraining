@@ -16,39 +16,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-/**
- * Create by S I M P L E on 2018/01/03
- *
- *                       _oo0oo_
- #                      o8888888o
- #                      88" . "88
- #                      (| -_- |)
- #                      0\  =  /0
- #                    ___/`---'\___
- #                  .' \\|     |# '.
- #                 / \\|||  :  |||# \
- #                / _||||| -:- |||||- \
- #               |   | \\\  -  #/ |   |
- #               | \_|  ''\---/''  |_/ |
- #               \  .-\__  '-'  ___/-. /
- #             ___'. .'  /--.--\  `. .'___
- #          ."" '<  `.___\_<|>_/___.' >' "".
- #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- #         \  \ `_.   \_ __\ /__ _/   .-` /  /
- #     =====`-.____`.___ \_____/___.-`___.-'=====
- #                       `=---='
- #
- #
- #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- #
- #               佛祖保佑         永无BUG
- */
+
 @Controller
 @RequestMapping(value = "/shipping/", method = RequestMethod.POST)
 public class ShippingController {
 
+    private final IShippingService iShippingService;
+
     @Autowired
-    private IShippingService iShippingService;
+    public ShippingController(IShippingService iShippingService) {
+        this.iShippingService = iShippingService;
+    }
 
     //添加新的收货地址
     @RequestMapping(value = "add_shipping_address.do", method = RequestMethod.POST)

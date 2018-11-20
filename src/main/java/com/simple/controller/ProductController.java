@@ -12,39 +12,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
 
-/**
- * Create by S I M P L E on 2018/01/04
- *
- #                       _oo0oo_
- #                      o8888888o
- #                      88" . "88
- #                      (| -_- |)
- #                      0\  =  /0
- #                    ___/`---'\___
- #                  .' \\|     |# '.
- #                 / \\|||  :  |||# \
- #                / _||||| -:- |||||- \
- #               |   | \\\  -  #/ |   |
- #               | \_|  ''\---/''  |_/ |
- #               \  .-\__  '-'  ___/-. /
- #             ___'. .'  /--.--\  `. .'___
- #          ."" '<  `.___\_<|>_/___.' >' "".
- #         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- #         \  \ `_.   \_ __\ /__ _/   .-` /  /
- #     =====`-.____`.___ \_____/___.-`___.-'=====
- #                       `=---='
- #
- #
- #     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- #
- #               佛祖保佑         永无BUG
- */
+
 @RequestMapping(value = "/product/")
 @Controller
 public class ProductController {
 
+    private final IProductService iProductService;
+
     @Autowired
-    private IProductService iProductService;
+    public ProductController(IProductService iProductService) {
+        this.iProductService = iProductService;
+    }
 
     //获取产品列表
     @RequestMapping(value = "get_product_list.do", method = RequestMethod.POST)
