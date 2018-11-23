@@ -1,6 +1,12 @@
 <component name="ArtifactManager">
   <artifact type="war" name="JSPTraining:war">
     <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>JSPTraining</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="archive" name="JSPTraining.war">
       <element id="artifact" artifact-name="JSPTraining:war exploded" />
     </root>
